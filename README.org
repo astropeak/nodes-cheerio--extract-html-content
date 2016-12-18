@@ -1,0 +1,25 @@
+* README
+** general
+   Use cheerio to parse html files as dom. The cheerio has the same api as jqeury.
+   https://www.npmjs.com/package/cheerio
+
+   First read the local html as text, and parse it to cheerio, then use api of cheerio(just like jquery's) to manupulate the content.
+
+   所有的题目都在hr元素的兄弟元素中。 因此先打到 hr元素（幸好整个文档中只有一个），然后使用nextAll获得所有后续的兄弟结点，最后用each遍历，用text获取文本。
+
+   乱码可能原因为fs.read函数有问题。
+** run
+   run 'node a.js' to generate unit1-8.txt
+   run 'node b.js' to generate unit_answer1-8.txt.
+   
+   Then Unit1-8.txt will be generated in current direcory.
+
+   答案从script中获取。网页中是写在script中的数组中的，先获取为string， 然后调用eval函数，则能够得到这个答案数组。对于task4, 答案是在这个元素中 'span.answerfont'， 因此直接获取这个元素的text，以数组返回就行了。
+
+   a.js和b.js有大量重复代码，因为是直接复制粘贴的。这样做最方便！！
+
+** knowledge point
+*** nodejs 读取中文
+    fs模块不支持中文，使用iconv-lite模块即可。
+    http://blog.csdn.net/youbl/article/details/29812669
+   
